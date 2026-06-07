@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLAPTOBIT — AI Autonomous Hiring Engine Protocol</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    body { background: #0a0e27; color: #fff; line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #1e2a4a; }
+    .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-cta { background: #3b82f6; color: #fff; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 100px 20px 60px; }
+    .badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid #3b82f6; color: #3b82f6; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; letter-spacing: 1px; }
+    h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+    h1 span { background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subhead { font-size: 20px; color: #94a3b8; max-width: 640px; margin: 0 auto 40px; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(90deg, #3b82f6, #8b5cf6); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
+    .btn-secondary { background: transparent; color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; border: 1px solid #3b82f6; text-decoration: none; cursor: pointer; }
+
+    /* TOKEN BANNER */
+    .token-banner { background: linear-gradient(90deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(139,92,246,0.3); border-radius: 16px; padding: 32px 40px; margin: 60px auto; max-width: 800px; display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; text-align: center; }
+    .token-stat { }
+    .token-stat .label { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+    .token-stat .value { font-size: 32px; font-weight: 900; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* 3 FLOORS */
+    .section-title { text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+    .section-sub { text-align: center; color: #64748b; margin-bottom: 48px; font-size: 16px; }
+    .floors { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 80px; }
+    .floor-card { background: #0f1631; border: 1px solid #1e2a4a; border-radius: 16px; padding: 36px 28px; flex: 1; min-width: 280px; max-width: 340px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+    .floor-card:hover { transform: translateY(-4px); border-color: #3b82f6; }
+    .floor-card.highlight { border-color: #8b5cf6; background: linear-gradient(135deg, #0f1631, #1a1040); }
+    .floor-num { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin-bottom: 8px; }
+    .floor-icon { font-size: 42px; margin-bottom: 16px; }
+    .floor-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .floor-card p { color: #94a3b8; font-size: 15px; margin-bottom: 20px; }
+    .floor-tag { display: inline-block; background: rgba(59,130,246,0.15); color: #3b82f6; padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .floor-card.highlight .floor-tag { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+
+    /* HOW IT WORKS */
+    .how { background: #0d1128; padding: 80px 20px; margin: 0 -20px; }
+    .steps { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; margin-top: 48px; }
+    .step { text-align: center; flex: 1; min-width: 200px; max-width: 240px; }
+    .step-num { width: 52px; height: 52px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; margin: 0 auto 16px; }
+    .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { color: #64748b; font-size: 14px; }
+
+    /* AFFILIATE */
+    .affiliate { padding: 80px 20px; }
+    .affiliate-grid { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .affiliate-text { flex: 1; min-width: 280px; max-width: 480px; }
+    .affiliate-text h2 { font-size: 36px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+    .affiliate-text p { color: #94a3b8; font-size: 16px; margin-bottom: 16px; }
+    .affiliate-box { flex: 1; min-width: 280px; max-width: 400px; background: #0f1631; border: 1px solid #1e2a4a; border-radius: 16px; padding: 32px; }
+    .affiliate-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #1e2a4a; font-size: 15px; }
+    .affiliate-row:last-child { border-bottom: none; }
+    .affiliate-row .key { color: #64748b; }
+    .affiliate-row .val { font-weight: 700; color: #3b82f6; }
+
+    /* NO CUSTODY */
+    .nocustody { background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08)); border: 1px solid rgba(59,130,246,0.2); border-radius: 20px; padding: 60px 40px; text-align: center; margin: 60px auto; max-width: 760px; }
+    .nocustody h2 { font-size: 32px; font-weight: 900; margin-bottom: 16px; }
+    .nocustody p { color: #94a3b8; font-size: 17px; max-width: 540px; margin: 0 auto; }
+
+    /* CTA FOOTER */
+    .cta-footer { text-align: center; padding: 100px 20px; }
+    .cta-footer h2 { font-size: 42px; font-weight: 900; margin-bottom: 20px; }
+    .cta-footer p { color: #64748b; font-size: 17px; margin-bottom: 40px; }
+
+    footer { border-top: 1px solid #1e2a4a; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; color: #334155; font-size: 13px; flex-wrap: wrap; gap: 12px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">FLAPTOBIT</div>
+  <a href="#stake" class="nav-cta">Stake & Enter →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">⚡ POWERED BY $FLAPTOKEN</div>
+  <h1>The <span>AI Autonomous</span><br/>Hiring Engine Protocol</h1>
+  <p class="subhead">Stake 100 $FLAPTOKEN. Get hired. Hire talent. Earn crypto. The AI runs the floor — you keep your assets.</p>
+  <div class="hero-buttons">
+    <a href="#stake" class="btn-primary">Stake $25 → Get Access</a>
+    <a href="#how" class="btn-secondary">How It Works</a>
+  </div>
+</div>
+
+<!-- TOKEN BANNER -->
+<div class="container">
+  <div class="token-banner">
+    <div class="token-stat">
+      <div class="label">Token</div>
+      <div class="value">$FLAPTOKEN</div>
+    </div>
+    <div class="token-stat">
+      <div class="label">Price</div>
+      <div class="value">$0.25</div>
+    </div>
+    <div class="token-stat">
+      <div class="label">Stake to Access</div>
+      <div class="value">100 FLAP</div>
+    </div>
+    <div class="token-stat">
+      <div class="label">Total Supply</div>
+      <div class="value">100M</div>
+    </div>
+    <div class="token-stat">
+      <div class="label">Affiliate Buyback</div>
+      <div class="value">20%</div>
+    </div>
+  </div>
+
+  <!-- 3 FLOORS -->
+  <div class="section-title">The 3-Floor Protocol</div>
+  <div class="section-sub">Each floor has one purpose. The AI connects them all.</div>
+  <div class="floors">
+    <div class="floor-card">
+      <div class="floor-num">Floor 1</div>
+      <div class="floor-icon">👤</div>
+      <h3>Employees</h3>
+      <p>Job seekers stake 100 $FLAPTOKEN to enter. The AI screens your profile, matches your skills, and connects you to verified employers — fast.</p>
+      <span class="floor-tag">Stake → Get Matched</span>
+    </div>
+    <div class="floor-card highlight">
+      <div class="floor-num">Floor 3 — The Engine</div>
+      <div class="floor-icon">🤖</div>
+      <h3>FLAPTOBIT AI</h3>
+      <p>Fully autonomous. No admin. No middleman. Fueled by $FLAPTOKEN — it screens candidates, matches employers, and distributes affiliate rewards on-chain.</p>
+      <span class="floor-tag">Autonomous · On-Chain</span>
+    </div>
+    <div class="floor-card">
+      <div class="floor-num">Floor 2</div>
+      <div class="floor-icon">🏢</div>
+      <h3>Employers</h3>
+      <p>Hiring companies stake 100 $FLAPTOKEN to post positions. The AI delivers pre-screened, verified candidates to your inbox within 48 hours.</p>
+      <span class="floor-tag">Post → Hire in 48hrs</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how" id="how">
+  <div class="container">
+    <div class="section-title">How It Works</div>
+    <div class="section-sub">Four steps. No middlemen. Your assets stay yours.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Stake $FLAPTOKEN</h4>
+        <p>Buy 100 $FLAPTOKEN ($25) and stake via your own wallet or exchange account. FLAPTOBIT never touches your assets.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Join Your Floor</h4>
+        <p>Employee or employer — the AI places you on the right floor and begins your onboarding automatically.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>AI Goes to Work</h4>
+        <p>FLAPTOBIT's autonomous engine screens, matches, and connects parties. No human approval needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Earn & Grow</h4>
+        <p>Affiliates earn commissions. 20% of exchange fees auto-buyback $FLAPTOKEN for users. Everyone wins.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AFFILIATE SECTION -->
+<div class="affiliate container" id="affiliate">
+  <div class="affiliate-grid">
+    <div class="affiliate-text">
+      <h2>Run an Affiliate Frontend.<br/>Earn While the AI Hires.</h2>
+      <p>Fork the protocol, add your affiliate ID, deploy your own frontend. Your users stake $FLAPTOKEN, the AI screens and hires — you earn 80% of affiliate commissions automatically.</p>
+      <p>No approval needed. Open protocol. MIT License.</p>
+      <a href="#stake" class="btn-primary" style="display:inline-block; margin-top:16px;">Launch Your Frontend →</a>
+    </div>
+    <div class="affiliate-box">
+      <div class="affiliate-row"><span class="key">Your Cut</span><span class="val">80% of commissions</span></div>
+      <div class="affiliate-row"><span class="key">$FLAPTOKEN Buyback</span><span class="val">20% auto market-buy</span></div>
+      <div class="affiliate-row"><span class="key">Custody</span><span class="val">Self-custody only</span></div>
+      <div class="affiliate-row"><span class="key">Admin Required</span><span class="val">None — DAO-governed</span></div>
+      <div class="affiliate-row"><span class="key">Supply</span><span class="val">100M fixed, no mint</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NO CUSTODY -->
+<div class="container">
+  <div class="nocustody">
+    <h2>🔐 FLAPTOBIT Never Holds Your Crypto</h2>
+    <p>Users connect their own exchange or wallet accounts. All staking and payouts happen through self-custody. FLAPTOBIT contracts only handle $FLAPTOKEN bonuses — nothing else.</p>
+  </div>
+
+  <!-- CTA FOOTER -->
+  <div class="cta-footer" id="stake">
+    <h2>Ready to Enter the Protocol?</h2>
+    <p>Stake 100 $FLAPTOKEN · $25 · Get AI-matched in 48 hours</p>
+    <a href="#" class="btn-primary">Stake $FLAPTOKEN Now →</a>
+  </div>
+</div>
+
+<footer>
+  <div>© 2026 FLAPTOBIT Protocol — MIT License</div>
+  <div>FLAPTOBIT never holds user crypto · Not financial advice · <a href="/disclosures" style="color:#334155;">Disclosures</a></div>
+</footer>
+
+</body>
+</html>
