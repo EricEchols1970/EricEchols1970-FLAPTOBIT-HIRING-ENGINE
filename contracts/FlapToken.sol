@@ -4,9 +4,9 @@
  * $FLAPTOKEN — ERC-20 Token Contract
  *
  * Owner/Founder: Eric Marlon Echols
- * Fixed Supply: 100,000,000 $FLAP
+ * Fixed Supply: 100,000,000 $FLAPTOKEN
  * Price: $0.25 USD per token
- * Stake: 100 $FLAP ($25) for platform access
+ * Stake: 100 $FLAPTOKEN ($25) for platform access
  *
  * Self-Custody Protocol: FLAPTOBIT never holds user assets.
  */
@@ -19,7 +19,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 contract FlapToken is ERC20, Ownable {
     uint256 public constant TOTAL_SUPPLY = 100_000_000 * 10**18; // 100M tokens
-    uint256 public constant STAKE_AMOUNT = 100 * 10**18; // 100 $FLAP for platform access
+    uint256 public constant STAKE_AMOUNT = 100 * 10**18; // 100 $FLAPTOKEN for platform access
     uint256 public constant AFFILIATE_BUYBACK_PERCENT = 20; // 20% affiliate buy-back mechanism
     uint256 public constant TOKEN_PRICE_USD = 25; // $0.25 per token in cents
 
@@ -36,12 +36,12 @@ contract FlapToken is ERC20, Ownable {
     }
 
     /**
-     * Stake 100 $FLAP tokens to access the FLAPTOBIT platform.
+     * Stake 100 $FLAPTOKEN tokens to access the FLAPTOBIT platform.
      * Tokens remain in the user's wallet — self-custody model.
      * This function only records the stake status on-chain.
      */
     function stake() external {
-        require(balanceOf(msg.sender) >= STAKE_AMOUNT, "Insufficient $FLAP balance to stake");
+        require(balanceOf(msg.sender) >= STAKE_AMOUNT, "Insufficient $FLAPTOKEN balance to stake");
         require(!hasStaked[msg.sender], "Already staked");
 
         hasStaked[msg.sender] = true;
