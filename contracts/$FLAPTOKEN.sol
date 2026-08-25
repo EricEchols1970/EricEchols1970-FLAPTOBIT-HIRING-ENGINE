@@ -18,10 +18,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 contract FlapToken is ERC20, Ownable {
-    uint256 public constant TOTAL_SUPPLY = 100_000_000 * 10**18; // 100M tokens
+    uint256 public constant TOTAL_SUPPLY = 100_000_000 * 10**18; // 100M $FLAPTOKEN
     uint256 public constant STAKE_AMOUNT = 100 * 10**18; // 100 $FLAPTOKEN for platform access
     uint256 public constant AFFILIATE_BUYBACK_PERCENT = 20; // 20% affiliate buy-back mechanism
-    uint256 public constant TOKEN_PRICE_USD = 25; // $0.25 per token in cents
+    uint256 public constant TOKEN_PRICE_USD = 25; // $0.25 per $FLAPTOKEN in cents
 
     mapping(address => bool) public hasStaked;
     mapping(address => uint256) public stakedAmount;
@@ -31,12 +31,12 @@ contract FlapToken is ERC20, Ownable {
     event AffiliateReward(address indexed affiliate, address indexed user, uint256 reward);
     event TokensBurned(address indexed from, uint256 amount);
 
-    constructor() ERC20("FLAPTOBIT", "FLAP") Ownable(msg.sender) {
+    constructor() ERC20("$FLAPTOKEN", "$FLAP") Ownable(msg.sender) {
         _mint(msg.sender, TOTAL_SUPPLY);
     }
 
     /**
-     * Stake 100 $FLAPTOKEN tokens to access the FLAPTOBIT platform.
+     * Stake 100 $FLAPTOKEN to access the FLAPTOBIT platform.
      * Tokens remain in the user's wallet — self-custody model.
      * This function only records the stake status on-chain.
      */
